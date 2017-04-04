@@ -1,0 +1,66 @@
+
+
+Q1: How many parameters does your initial model contain? What is the memory footprint? What is the accuracy on the testing data set?
+
+
+Initial Model Parameter : 1199882
+Compressed Model parameters:  83053 + initial(Conv_2 tak k Parameters)
+
+Compression Rate (init/compressd):  
+
+Memory Footprint per Image (FeedForward): 
+~ 4.mb
+
+###################################################
+
+Q2: Design experiments on how we can trade accuracy with model size. Let's say your initial model accuracy is 98%. What would be the minimum model size if we are willing to reduce the accuracy to no less than 95%. Explain your design choice. 
+
+###### Answer #2 
+Experiment: 
+THe number of hidden Layer Neurons in small model was iteratively decreased, this showed a exponential decrease in model size and linear decrease in accuracy. 
+
+By examining the plot of number of parameters(or model size) to accuracy. we can find the tradeoff, in the number of Hidden Layer Neurons needed to achieve atleast 0.95 accuracy. 
+
+I was able to obtain 16.2x times compression.
+
+Other multi-layer architectures were not tried in my experiments. 
+
+
+## Experiment Settings and Hyper Parameters for student model. 
+
+Various Dropouts were tested . 0.2 was chosen to regularize a bit, and showed good generalization accuracy. 
+
+lossFunction : Mean Square Error as mentioned by Geoff Hinton in the paper.. Optimized Adadelta optimizer over
+
+####################################################
+size = s(0.95)
+size = 10,000
+
+Q3: Let s(f) be the minimum model size that can achieve accuracy f. 
+
+Given 0 <= f_1 < f_2 < ... < f_n  < =1, do you agree that:
+
+0 < s(f_1) < s(f_2) < ... < s(f_n) 
+
+###### Answer #3 
+
+No, The above equation represinting the relation of model size and minimum accuray does not hold. During my experiments I have found that accuracy has rised/equal even when the model size was reduced.
+however, over after plotting the accuracy against model size . it is observed that the accuracy decreases linearly as model size is reduced. 
+
+
+
+Can you prove / disprove the above conjecture in your design space? If you cannot justify it mathematically, experimental plots would qualify as well.
+
+Please write a report to share your findings.
+
+Bonus: Instead of MNIST, you can repeat your experiment on CIFAR or even ImageNet if you have many GPUs at hand. This is not required but could be tons of fun.
+
+Results will be judged by how **small** the final model is. Submission should be the following:
+
+runme.py - script that contains the smallest model + training code
+readme.txt - explain how to run the script
+report.doc / pdf / txt - document your findings, plots, math, and any thoughts on how to compress / miniaturize model in general
+
+It is also OK if you choose to use other tools such as Caffe, (Py)Torch, or MatConvNet. Requirements would be the same.
+
+Thanks again for taking the time, and I look forward to keeping in touch.
