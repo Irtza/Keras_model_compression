@@ -1,4 +1,6 @@
-# Implementation of Logit Regression in Keras and experiments to investigate the affect of number of parameters in Model. 
+## Implementation of Logit Regression in Keras 
+
+Experiments and thoughts to investigate the affect of number of parameters in Model.
 
 
 ### MNIST Model Evaluation
@@ -9,26 +11,19 @@
 
 
 ### MNIST Model Architecture and Summary
+
 ____________________________________________________________________________________________________
-Layer (type)                     Output Shape          Param #     Connected to                     
-____________________________________________________________________________________________________
-convolution2d_1 (Convolution2D)  (None, 26, 26, 32)    320         convolution2d_input_1[0][0]      
-____________________________________________________________________________________________________
-convolution2d_2 (Convolution2D)  (None, 24, 24, 64)    18496       convolution2d_1[0][0]            
-____________________________________________________________________________________________________
-maxpooling2d_1 (MaxPooling2D)    (None, 12, 12, 64)    0           convolution2d_2[0][0]            
-____________________________________________________________________________________________________
-dropout_1 (Dropout)              (None, 12, 12, 64)    0           maxpooling2d_1[0][0]             
-____________________________________________________________________________________________________
-flatten_1 (Flatten)              (None, 9216)          0           dropout_1[0][0]                  
-____________________________________________________________________________________________________
-dense_1 (Dense)                  (None, 128)           1179776     flatten_1[0][0]                  
-____________________________________________________________________________________________________
-dropout_2 (Dropout)              (None, 128)           0           dense_1[0][0]                    
-____________________________________________________________________________________________________
-dense_2 (Dense)                  (None, 10)            1290        dropout_2[0][0]                  
-____________________________________________________________________________________________________
-activation_1 (Activation)        (None, 10)            0           dense_2[0][0]                    
+| Layer (type)                      | Output Shape          | Param #     |Connected to                     
+|----------------------------------:|----------------------:|------------:|------------------------:|
+| convolution2d_1 (Convolution2D) | (None, 26, 26, 32) |   320      |   convolution2d_input_1[0][0] |     
+| convolution2d_2 (Convolution2D) | (None, 24, 24, 64) |   18496    |   convolution2d_1[0][0]       |     
+|maxpooling2d_1 (MaxPooling2D)    | (None, 12, 12, 64) |   0        |   convolution2d_2[0][0]       |     
+|dropout_1 (Dropout)              | (None, 12, 12, 64) |   0        |   maxpooling2d_1[0][0]        |     
+|flatten_1 (Flatten)              | (None, 9216)       |   0        |   dropout_1[0][0]             |     
+|dense_1 (Dense)                  | (None, 128)        |   1179776  |   flatten_1[0][0]             |     
+|dropout_2 (Dropout)              | (None, 128)        |   0        |   dense_1[0][0]               |     
+|dense_2 (Dense)                  | (None, 10)         |   1290     |   dropout_2[0][0]             |     
+|activation_1 (Activation)        | (None, 10)         |   0        |   dense_2[0][0]               |     
 ____________________________________________________________________________________________________
 
 - Total params: 1,199,882
