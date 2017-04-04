@@ -13,5 +13,5 @@ python runme.py
 ### See Experiment Details in 
 report.txt
 
-## See Plots and figures in ./plots directory 
+#### See Plots and figures in ./plots directory 
 
