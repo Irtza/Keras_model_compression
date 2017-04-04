@@ -11,7 +11,7 @@
 ### MNIST Model Architecture and Summary
 ____________________________________________________________________________________________________
 Layer (type)                     Output Shape          Param #     Connected to                     
-====================================================================================================
+____________________________________________________________________________________________________
 convolution2d_1 (Convolution2D)  (None, 26, 26, 32)    320         convolution2d_input_1[0][0]      
 ____________________________________________________________________________________________________
 convolution2d_2 (Convolution2D)  (None, 24, 24, 64)    18496       convolution2d_1[0][0]            
@@ -29,11 +29,12 @@ ________________________________________________________________________________
 dense_2 (Dense)                  (None, 10)            1290        dropout_2[0][0]                  
 ____________________________________________________________________________________________________
 activation_1 (Activation)        (None, 10)            0           dense_2[0][0]                    
-====================================================================================================
-Total params: 1,199,882
-Trainable params: 1,199,882
-Non-trainable params: 0
-______________________________
+____________________________________________________________________________________________________
+
+- Total params: 1,199,882
+- Trainable params: 1,199,882
+- Non-trainable params: 0
+
 
 
 ### Reducing The Model
@@ -48,9 +49,9 @@ The Logits from the last layer. before the Activation layer were used, as mentio
 The python Notebook in this repository shows several other architectures with varying number of hiddenLayer Neurons, and the affect of HiddenNeurons on the accuracy through plots. See plots/ subdirectory for findings 
 
 ### Evaluation of the Model of Reduction
-After Compression the 
-Compressed Model parameters:  74188
-Compression Rate :  16.2x
+
+- Compressed Model parameters:  74188
+- Compression Rate :  16.2x
 
 ### Exepriments on how we can trade accuracy with model size. initial model accuracy is 99%. The minimum model size that we can achieve without dropping below 0.95 accuracy. 
 
@@ -79,5 +80,3 @@ Its also worth noting that in MNIST dataset the characters only appear in the ce
 I think its interesting to explore quantization in the conv layers as well. 
 
 Ideas from Song Hans work in deep compression can be taken forward to establish a general framework for compression of deep-learning models. https://arxiv.org/abs/1510.00149 "Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding"
-
-
