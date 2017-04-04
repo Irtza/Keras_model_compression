@@ -1,16 +1,16 @@
-## Keras Model Compression 
+# Keras Model Compression 
 
-## An implementation of Model compression through Logit Regression in Keras.
+An implementation of Model compression through Logit Regression in Keras.
 
-## Distilling the Knowledge in a Neural Network - Geoffery Hinton et. al
-https://arxiv.org/abs/1503.02531
+Implementation of "Distilling the Knowledge in a Neural Network - Geoffery Hinton et. al" https://arxiv.org/abs/1503.02531
 
-## Usage 
+
+### Usage 
 
 python runme.py 
 
 
-## See Experiment Details in 
+### See Experiment Details in 
 report.txt
 
 ## See Plots and figures in ./plots directory 
