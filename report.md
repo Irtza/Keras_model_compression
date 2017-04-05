@@ -57,13 +57,17 @@ By examining the plot of number of parameters(or model size) to accuracy. we can
 
 I was able to obtain 16.2x times compression, while keeping accuracy at 0.96
 
+
+![image-title-here](/plots/CompressionRate_Accuracy.png){:class="img-responsive"}
+![image-title-here](/plots/parameterSize_Accuracy.png){:class="img-responsive"}
+
+
 ### Experiment Settings and Hyper Parameters for student model. 
 Various Dropouts were tested . 0.2 was chosen to regularize a bit, and showed good generalization accuracy. 
 
 lossFunction : Mean Square Error as mentioned by Geoff Hinton in the paper.. Optimized Adadelta optimizer over
 
 Let s(f) be the minimum model size that can achieve accuracy f. Given 0 <= f_1 < f_2 < ... < f_n  < =1,  0 < s(f_1) < s(f_2) < ... < s(f_n) 
-
 
 No, The above equation representing the relation of model size and minimum accuray does not hold. During my experiments I have found that accuracy has rised/equal even when the model size was reduced several x times .
 
