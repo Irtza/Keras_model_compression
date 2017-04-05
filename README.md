@@ -1,17 +1,36 @@
 # Keras Model Compression 
 
-An implementation of Model compression through Logit Regression in Keras.
-
-Implementation of "Distilling the Knowledge in a Neural Network - Geoffery Hinton et. al" https://arxiv.org/abs/1503.02531
+An Implementation of "Distilling the Knowledge in a Neural Network - Geoffery Hinton et. al" https://arxiv.org/abs/1503.02531
 
 
-### Usage 
+#### Usage 
 
 python runme.py 
 
 
-### See Experiment Details in 
-report.txt
+##### Metrics:
+- Initial Accuracy on test set~= 0.99
 
-#### See Plots and figures in ./plots directory 
+##### Initial Model Parameters:
+- Total params: 1,199,882
+- Trainable params: 1,199,882
+
+##### Evaluation of the Model of Reduction
+- Compressed Model parameters:  74188
+- Compression Rate :  16.2x
+- Accuracy : 0.96
+
+
+##### See Experiment Details in 
+- report.md
+
+![Compression Rate and Accuracy](/plots/CompressionRate_Accuracy.png){:class="img-responsive"}
+![Parameter Size and Accuracy](/plots/parameterSize_Accuracy.png){:class="img-responsive"}
+
+
+
+
+
+
+###### See experiments in Notebook. 
 
