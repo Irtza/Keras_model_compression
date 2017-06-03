@@ -8,36 +8,27 @@ An Implementation of "Distilling the Knowledge in a Neural Network - Geoffery Hi
 python runme.py 
 
 
-##### Metrics:
-- Initial Accuracy on test set~= 0.99
-
 ##### Initial Model Parameters:
 - Total params: 1,199,882
 - Trainable params: 1,199,882
 
-##### Evaluation of the Model of Reduction
-- Compressed Model parameters:  74188
-- Compression Rate :  16.2x
-- Accuracy : 0.96
-
-
-
-![Compression Rate and Accuracy](/plots/CompressionRate_Accuracy.png){:class="img-responsive"}
-![Parameter Size and Accuracy](/plots/parameterSize_Accuracy.png){:class="img-responsive"}
-
-
-## Implementation of Logit Regression in Keras 
-
-Experiments and thoughts to investigate the affect of number of parameters in Model.
-
-### MNIST Model Evaluation
+### Model Evaluation before compression
 
 - Initial Accuracy on test set~= 0.99
 - Initial Model Parameters : 1199882
 - Memory footprint per Image Feed Forward ~= ', 4.577 Mb 
 
+##### Evaluation of the Model after compression
 
-### MNIST Model Architecture and Summary
+- Compressed Model parameters:  74188
+- Compression Rate :  16.2x
+- Accuracy : 0.96
+
+## Implementation of Logit Regression in Keras 
+
+Experiments and thoughts to investigate the affect of number of parameters in Model.
+
+### Convolutional Network Model Architecture and Summary
 
 ____________________________________________________________________________________________________
 | Layer (type)                      | Output Shape          | Param #     |Connected to                     
@@ -58,19 +49,18 @@ ________________________________________________________________________________
 - Non-trainable params: 0
 
 
-
 ### Reducing The Model
-If we observe the model weights and number of parameters, the most consuming layers are the 2 Dense Layers. and the two convolutuonal layers have only 18,816 parameters. accounting for only (18816 / 1,199,882) x 100 =  1.56 percent of all the parameters 
+If we observe the model weights and number of parameters, the most consuming layers are the 2 Dense Layers. and the two convolutuonal layers have only 18,816 parameters. Accounting for only (18816 / 1,199,882) x 100 =  1.56 percent of all the parameters,
 
 So the first Step is to either Reduce this matrix using some sort of compression or quantization Approach or to replace it with a lighter model. That generalizes well to new examples, and learns to model the heavy dense layer of the  original model. 
 
 Replacing these 2 heavy dense layers with 1 Hidden layer with 6 HiddenLayer Neurons. We can achieve an accuracy of 0.9626. 
 
-The Logits from the last layer. before the Activation layer were used, as mentioned in Geoffery Hinton's paper to avoid encoutering very small activation values after squashing through Softmax function.  
+The Logits from the last layer. before the Activation layer were used, as mentioned in Geoffery Hinton's paper to avoid encoutering very small activation values after squashing through Softmax function.
 
 The python Notebook in this repository shows several other architectures with varying number of hiddenLayer Neurons, and the affect of HiddenNeurons on the accuracy through plots. See plots/ subdirectory for findings 
 
-### Evaluation of the Model of Reduction
+### Evaluation of the Model after Reduction
 
 - Compressed Model parameters:  74188
 - Compression Rate :  16.2x
@@ -83,7 +73,6 @@ THe number of hidden Layer Neurons in small model was iteratively decreased, thi
 By examining the plot of number of parameters(or model size) to accuracy. we can find the tradeoff, in the number of Hidden Layer Neurons needed to achieve atleast 0.95 accuracy. 
 
 I was able to obtain 16.2x times compression, while keeping accuracy at 0.96
-
 
 ![Compression-Rate-Accuracy](/plots/CompressionRate_Accuracy.png){:class="img-responsive"}
 ![ParameterSize-Accuracy](/plots/parameterSize_Accuracy.png){:class="img-responsive"}
@@ -105,4 +94,7 @@ Its also worth noting that in MNIST dataset the characters only appear in the ce
 
 I think its interesting to explore quantization in the conv layers as well. 
 
-Ideas from Song Hans work in deep compression can be taken forward to establish a general framework for compression of deep-learning models. https://arxiv.org/abs/1510.00149 "Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding"
+Ideas from Song Hans work in deep compression can be taken forward to establish a general framework for compression of deep-learning models in keras. 
+
+See Hans work here: 
+https://arxiv.org/abs/1510.00149 "Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding"
