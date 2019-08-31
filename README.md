@@ -52,13 +52,13 @@ ________________________________________________________________________________
 ### Reducing The Model
 If we observe the model weights and number of parameters, the most consuming layers are the 2 Dense Layers. and the two convolutuonal layers have only 18,816 parameters. Accounting for only (18816 / 1,199,882) x 100 =  1.56 percent of all the parameters,
 
-So the first Step is to either Reduce this matrix using some sort of compression or quantization Approach or to replace it with a lighter model. That generalizes well to new examples, and learns to model the heavy dense layer of the  original model. 
+So the first Step is to either to replace it with a lighter model. That generalizes well to new examples, and learns to model the heavy dense layer of the  original model. 
 
 Replacing these 2 heavy dense layers with 1 Hidden layer with 6 HiddenLayer Neurons. We can achieve an accuracy of 0.9626. 
 
 The Logits from the last layer. before the Activation layer were used, as mentioned in Geoffery Hinton's paper to avoid encoutering very small activation values after squashing through Softmax function.
 
-The python Notebook in this repository shows several other architectures with varying number of hiddenLayer Neurons, and the affect of HiddenNeurons on the accuracy through plots. See plots/ subdirectory for findings 
+The python Notebook in this repository shows other architectures with varying number of hiddenLayer Neurons, and the affect of HiddenNeurons on the accuracy. See plots/ subdirectory for findings 
 
 ### Evaluation of the Model after Reduction
 
@@ -87,12 +87,10 @@ Let s(f) be the minimum model size that can achieve accuracy f. Given 0 <= f_1 <
 
 No, The above equation representing the relation of model size and minimum accuray does not hold. During my experiments I have found that accuracy has rised/equal even when the model size was reduced several x times .
 
-However, after plotting the accuracy against model size. it is observed that the accuracy decreases linearly as model size is reduced, as a general trend. 
+However, after plotting the accuracy against model size. it is observed that the accuracy decreases as model size is reduced.
 
 ### Future Work and Improvements :
-Its also worth noting that in MNIST dataset the characters only appear in the center of the image, and convolution weights corresponding to the edges are blank/constant and likely to be highly redundant or noisy. Pruning these weight connections through the network is likely to effectively reduce model size. also due to the simplicity of the structure in MNIST. 
-
-I think its interesting to explore quantization in the conv layers as well. 
+Its also worth noting that in MNIST dataset the characters only appear in the center of the image, and convolution weights corresponding to the edges are blank/constant and likely to be highly redundant or noisy. Pruning these weight connections through the network is likely to effectively reduce model size.
 
 Ideas from Song Hans work in deep compression can be taken forward to establish a general framework for compression of deep-learning models in keras. 
 
